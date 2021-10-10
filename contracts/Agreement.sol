@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "./Escrow.sol";
 
-contract AgreementToken is ERC721Enumerable {
+contract Agreement is ERC721Enumerable {
 
     struct AgreementDetails{
         uint256 price;
@@ -56,8 +56,8 @@ contract AgreementToken is ERC721Enumerable {
     }
 
 
-    function placeOrder(uint256 id, uint256 category_id) public{
-        Escrow order = new Escrow(address(this), id, category_id);
+    function placeOrder(uint256 id, uint256 category_id, string memory public_key, string memory private_key) public{
+        Escrow order = new Escrow(address(this), id, category_id, public_key, private_key);
         AgreementDetails memory agt = agreementDetail[id];
         IERC20(agt.token).transferFrom(msg.sender, address(order), agt.price);
     }

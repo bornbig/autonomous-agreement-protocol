@@ -2,7 +2,7 @@ pragma solidity ^0.8.0;
 import "./Escrow.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Marshal is Ownable{
+contract Marshals is Ownable{
 
     address[] public agreements;
     mapping(address => bool) public is_marshal;

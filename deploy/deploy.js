@@ -16,42 +16,42 @@ module.exports = async ({getUnnamedAccounts, deployments, ethers, network}) => {
 
         Utils.infoMsg("Deploying Agreement Contract")
 
-        //deploy dataStore contract
-        let deployedDataStore = await deploy('AgreementToken', {
+        //deploy AgreementToken contract
+        let deployedAgreement = await deploy('Agreement', {
             from: account,
             log:  false
         });
 
-        let dataStoreAddress = deployedDataStore.address;
+        let agreementTokenAddress = deployedAgreement.address;
 
-        Utils.successMsg(`Agreement Contract Address: ${dataStoreAddress}`);
+        Utils.successMsg(`Agreement Contract Address: ${agreementTokenAddress}`);
 
 
 
         Utils.infoMsg("Deploying Listing Contract")
 
-        //deploy dataStore contract
-        let deployedDataStore = await deploy('Listing', {
+        //deploy Listing contract
+        let deployedListing = await deploy('Listing', {
             from: account,
             log:  false
         });
 
-        let dataStoreAddress = deployedDataStore.address;
+        let listingAddress = deployedListing.address;
 
-        Utils.successMsg(`Listing Contract Address: ${dataStoreAddress}`);
+        Utils.successMsg(`Listing Contract Address: ${listingAddress}`);
 
 
         Utils.infoMsg("Deploying Marshal Contract")
 
-        //deploy dataStore contract
-        let deployedDataStore = await deploy('Marshals', {
+        //deploy Marshals contract
+        let deployedMarshals = await deploy('Marshals', {
             from: account,
             log:  false
         });
 
-        let dataStoreAddress = deployedDataStore.address;
+        let marshalsAddress = deployedMarshals.address;
 
-        Utils.successMsg(`Marshals Contract Address: ${dataStoreAddress}`);
+        Utils.successMsg(`Marshals Contract Address: ${marshalsAddress}`);
 
 
     } catch (e){

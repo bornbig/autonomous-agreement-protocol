@@ -1,6 +1,6 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
-import "./Agreement.sol";
+import "./interface/IAgreement.sol";
 import "./interface/IERC20.sol";
 import "./lib/Routes.sol";
 import "./interface/IMarshals.sol";
@@ -39,8 +39,8 @@ contract Escrow{
      */
 
     constructor (address _agreement, uint256 _agId, uint256 _category_id, string memory public_key, string memory private_key){
-        AgreementToken agreementContract = AgreementToken(_agreement);
-        AgreementToken.AgreementDetails memory details = agreementContract.getAgreementDetails(_agId);
+        IAgreement agreementContract = IAgreement(_agreement);
+        IAgreement.AgreementDetails memory details = agreementContract.getAgreementDetails(_agId);
         agreementDetails = AgreementDetails(details.price, details.time, details.ipfs_hash, details.is_public, details.token, details.owner, msg.sender);
         status = 100;
 
